@@ -1,4 +1,44 @@
+"" =========================================
+"" Vundle 
+"" =========================================
+
 set nocompatible
+filetype off  "обязательно!
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+"репозитории на github
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'tpope/vim-repeat'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'https://github.com/raichoo/haskell-vim'
+Plugin 'https://github.com/altercation/vim-colors-solarized.git'
+
+call vundle#end()
+
+filetype plugin indent on     " обязательно!
+
+"" Brief help
+"" :PluginList       - lists configured plugins
+"" :PluginInstall    - installs plugins; append `!` to update or just
+"" :PluginUpdate
+"" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+"" :PluginClean      - confirms removal of unused plugins; append `!` to
+""  auto-approve removal
+""
+"" see :h vundle for more details or wiki for FAQ"
+""
+"" =========================================
+"" =========================================
+
+syntax on
+set background=dark
+colorscheme solarized
+let g:solarized_termcolors=256
 set number
 set tabstop=4
 set shiftwidth=4
@@ -27,17 +67,4 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "Q. How can I close vim if the only window left open is a NERDTree?
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-filetype off  "обязательно!
 
-set rtp+=~/.vim/bundle/vundle/
-
-call vundle#rc()
-
-filetype plugin indent on     " обязательно!
-
-"репозитории на github
-Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/nerdtree'
-Bundle 'davidhalter/jedi-vim'
-Bundle 'tpope/vim-repeat'
-Bundle 'jiangmiao/auto-pairs'
