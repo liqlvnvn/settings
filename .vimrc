@@ -17,6 +17,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'https://github.com/raichoo/haskell-vim'
 Plugin 'https://github.com/altercation/vim-colors-solarized.git'
+Plugin 'https://github.com/ap/vim-templates'
 
 call vundle#end()
 
@@ -67,4 +68,6 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "Q. How can I close vim if the only window left open is a NERDTree?
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-
+"Configure vim-templates
+let g:email = 'liqlvnvn@gmail.com'
+let g:username = 'liqlvnvn'
