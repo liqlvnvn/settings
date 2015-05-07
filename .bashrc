@@ -57,8 +57,12 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
+<<<<<<< HEAD
 #    PS1="${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
 PS1="HAHA"
+=======
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+>>>>>>> 72a3062814f53d6851c48be6287062d8fd330e13
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -67,8 +71,12 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
+<<<<<<< HEAD
     #PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     PS1='\[\033[0;36m\][\u@\h:\w ] $ \[\033[0;00m\]'
+=======
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+>>>>>>> 72a3062814f53d6851c48be6287062d8fd330e13
     ;;
 *)
     ;;
@@ -116,4 +124,7 @@ if ! shopt -oq posix; then
 fi
 
     export TERM=xterm-256color
+<<<<<<< HEAD
 export PATH=~/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.8.4/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+=======
+>>>>>>> 72a3062814f53d6851c48be6287062d8fd330e13
