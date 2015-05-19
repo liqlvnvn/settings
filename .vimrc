@@ -37,9 +37,9 @@ filetype plugin indent on     " обязательно!
 "" =========================================
 
 syntax on
-set background=dark
-colorscheme solarized
-let g:solarized_termcolors=256
+""set background=dark
+""colorscheme solarized
+""let g:solarized_termcolors=256
 set number
 set tabstop=4
 set shiftwidth=4
