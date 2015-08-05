@@ -47,8 +47,14 @@ if has("gui_running")
 endif
 
 syntax on
+<<<<<<< HEAD
 set t_Co=256
 let g:solarized_termcolors=256
+=======
+""set background=dark
+""colorscheme solarized
+""let g:solarized_termcolors=256
+>>>>>>> 2525f8424b1c0b405ae5d0725eb985af191f9330
 set number
 set tabstop=4
 set shiftwidth=4
