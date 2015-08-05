@@ -44,6 +44,7 @@ if has("gui_running")
     set background=light
     colorscheme solarized
     set t_Co=256
+    set guifont=DejaVu\ Sans\ Mono\ 12
 endif
 
 syntax on
