@@ -81,7 +81,6 @@ set laststatus=2
 " For regular expressions turn magic on
 set magic
 
-set mouse=a
 set shell=/bin/sh 
 
 "Настройки поиска и подсветки результатов поиска
