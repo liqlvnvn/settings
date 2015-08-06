@@ -8,7 +8,6 @@
 (setq auto-save-list-file-name  nil) ; Don't want any .saves files
 (setq auto-save-default         nil) ; Don't want any auto saving
 
-
 (add-to-list 'load-path "~/.emacs.d/")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -42,7 +41,6 @@
 (global-set-key (kbd "<f2>") 'bs-show)
 
 ;; http://www.emacswiki.org/emacs/AutoComplete
-;(add-to-list 'load-path "~/EmacsCasts/episode03/auto-complete")
 (require 'auto-complete-config)
 (ac-config-default)
 (add-to-list 'ac-dictionary-directories "/home/fedora/.emacs.d/auto-complete/dict")
@@ -57,16 +55,12 @@
 ;(yas-global-mode 1)
 ;(yas/load-directory "~/EmacsCasts/episode03/yasnippet/snippets")
 
-;; http://www.emacswiki.org/emacs/ColorTheme
-;; Tools -> Color themes
+;; https://github.com/sellout/emacs-color-theme-solarized
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
 (load-theme 'solarized t)
 (set-frame-parameter nil 'background-mode 'light)
 (set-terminal-parameter nil 'background-mode 'light)
 (enable-theme 'solarized)
-;(require 'color-theme)
-;(color-theme-initialize)
-;(setq color-theme-is-global t)
 
 ;; Options -> Set default font
 ;(add-to-list 'default-frame-alist '(font . "Consolas-18"))
