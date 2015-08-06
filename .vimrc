@@ -102,7 +102,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "Q. How can I close vim if the only window left open is a NERDTree?
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "How can I map a specific key or shortcut to open NERDTree?
-map <C-n> :NERDTreeToggle<CR>
+map <F12> :NERDTreeToggle<CR>
 "" =========================================
 "" =========================================
 
