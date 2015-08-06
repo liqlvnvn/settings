@@ -63,5 +63,5 @@
 (enable-theme 'solarized)
 
 ;; Options -> Set default font
-;(add-to-list 'default-frame-alist '(font . "Consolas-18"))
-;(set-default-font "Consolas-18")
+(add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-12"))
+(set-default-font "DejaVu Sans Mono-12")
