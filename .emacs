@@ -1,8 +1,8 @@
 (setq show-paren-style 'expression)
 (show-paren-mode 2)
 
-;(menu-bar-mode -1)
-;(tool-bar-mode -1)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
 
 (setq make-backup-files         nil) ; Don't want any backup files
 (setq auto-save-list-file-name  nil) ; Don't want any .saves files
