@@ -93,6 +93,7 @@ nmap <F8> :TagbarToggle<CR>
 "
 "" =========================================
 "" Syntastic 
+"" https://github.com/scrooloose/syntastic
 "" =========================================
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -102,6 +103,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
+let b:syntastic_mode = "passive"
 let g:syntastic_shell = "/bin/sh"
 map <F9> :SyntasticToggleMode<CR>
 map <F10> :SyntasticCheck<CR>
@@ -153,7 +155,11 @@ set showmatch
 set hlsearch
 set incsearch
 set ignorecase
+" Press Space to turn off highlighting and clear any message already
+" displayed.
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+" Специальные настройки отступов для Haskell
 au FileType haskell call s:Haskell()
 function! s:Haskell()
     set tabstop=2
