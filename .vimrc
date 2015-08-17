@@ -108,16 +108,19 @@ map <F10> :SyntasticCheck<CR>
 "" =========================================
 "" =========================================
 
-if has("gui_running")
-    set background=light
-    colorscheme solarized
-    set t_Co=256
-    set guifont=DejaVu\ Sans\ Mono\ 12
-endif
-
 syntax on
-set t_Co=256
-let g:solarized_termcolors=256
+set background=dark "actually it's will be light. 
+                    "but it should be reverse to terminal theme
+"set t_Co=256
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans = 0 | 1 
+"g:solarized_degrade = 0 | 1 
+"g:solarized_bold = 1 | 0 
+"g:solarized_underline = 1 | 0 
+"g:solarized_italic = 1 | 0 
+"g:solarized_contrast = "normal"| "high" or "low" 
+"g:solarized_visibility= "normal"| "high" or "low" 
+colo solarized
 set number
 set tabstop=4
 set shiftwidth=4
@@ -157,3 +160,13 @@ function! s:Haskell()
     set shiftwidth=2
     set softtabstop=2
 endfunction
+
+
+if has("gui_running")
+    set background=light "actually it's will be light. 
+                        "but it should be reverse to terminal theme    
+    set t_Co=256
+    let g:solarized_termcolors=256
+    colorscheme solarized
+    set guifont=DejaVu\ Sans\ Mono\ 12
+endif
