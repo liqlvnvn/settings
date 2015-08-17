@@ -13,15 +13,22 @@ call vundle#begin()
 
 "репозитории на github
 Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-surround'
+"Plugin 'tpope/vim-surround'
+"" Panels
 Plugin 'scrooloose/nerdtree'
+Plugin 'bling/vim-airline'
+Plugin 'kien/ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'majutsushi/tagbar'
+"" Syntax highlight
 Plugin 'davidhalter/jedi-vim'
-Plugin 'tpope/vim-repeat'
-Plugin 'jiangmiao/auto-pairs'
+"Plugin 'tpope/vim-repeat'
+"Plugin 'jiangmiao/auto-pairs'
+Plugin 'Raimondi/delimitMate'
+"" Languages support
 Plugin 'https://github.com/raichoo/haskell-vim'
 Plugin 'https://github.com/altercation/vim-colors-solarized.git'
 Plugin 'https://github.com/ap/vim-templates'
-Plugin 'bling/vim-airline'
 
 call vundle#end()
 
@@ -39,56 +46,6 @@ filetype plugin indent on     " обязательно!
 ""
 "" =========================================
 "" =========================================
-
-if has("gui_running")
-    set background=light
-    colorscheme solarized
-    set t_Co=256
-    set guifont=DejaVu\ Sans\ Mono\ 12
-endif
-
-syntax on
-set t_Co=256
-let g:solarized_termcolors=256
-set number
-set tabstop=4
-set shiftwidth=4
-set smarttab
-set et "включаем автозамену по умолчанию
-
-set wrap "включаем перенос длинных строк
-set ai "включить автоотступы для новых строк
-"set cin "включить отступы в стиле C
-set expandtab 
-set shiftround                  "Round indent to nearest shiftwidth multiple
-set softtabstop=4               "Insert 4 spaces when tab is pressed
-
-" Игнорирует autoindent при вставки из буфера
-set paste
-
-" Better command-line completion
-set wildmenu
-
-" Show partial commands in the last line of the screen
-set showcmd
-
-" Display the cursor position on the last line of the screen or in the status
-" line of a window
-set ruler
-
-" Always display the status line, even if only one window is displayed
-set laststatus=2
-
-" For regular expressions turn magic on
-set magic
-
-set shell=/bin/sh 
-
-"Настройки поиска и подсветки результатов поиска
-set showmatch
-set hlsearch
-set incsearch
-set ignorecase
 
 "" =========================================
 "" NERDTree 
@@ -115,4 +72,63 @@ let g:airline#extensions#tabline#enabled = 1
 "" =========================================
 "" =========================================
 
+"" =========================================
+"" ctrlp 
+"" =========================================
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"" =========================================
+"" =========================================
+
+"" =========================================
+"" tagbar 
+"" =========================================
+nmap <F8> :TagbarToggle<CR>
+"" =========================================
+"" =========================================
+
+if has("gui_running")
+    set background=light
+    colorscheme solarized
+    set t_Co=256
+    set guifont=DejaVu\ Sans\ Mono\ 12
+endif
+
+syntax on
+set t_Co=256
+let g:solarized_termcolors=256
+set number
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set et "включаем автозамену по умолчанию
+set wrap "включаем перенос длинных строк
+set ai "включить автоотступы для новых строк
+"set cin "включить отступы в стиле C
+set expandtab 
+set shiftround                  "Round indent to nearest shiftwidth multiple
+set softtabstop=4               "Insert 4 spaces when tab is pressed
+" Игнорирует autoindent при вставки из буфера
+set nopaste
+set pastetoggle=<F2>
+" Better command-line completion
+set wildmenu
+" Show partial commands in the last line of the screen
+set showcmd
+" Display the cursor position on the last line of the screen or in the status
+" line of a window
+set ruler
+" Always display the status line, even if only one window is displayed
+set laststatus=2
+" For regular expressions turn magic on
+set magic
+" Для установки плагинов
+set shell=/bin/bash 
+"Настройки поиска и подсветки результатов поиска
+set showmatch
+set hlsearch
+set incsearch
+set ignorecase
 
