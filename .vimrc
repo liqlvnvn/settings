@@ -22,6 +22,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
 "" Syntax highlight
 Plugin 'davidhalter/jedi-vim'
+"" Syntax cheker
+Plugin 'scrooloose/syntastic'
 "Plugin 'tpope/vim-repeat'
 "Plugin 'jiangmiao/auto-pairs'
 Plugin 'Raimondi/delimitMate'
@@ -86,6 +88,23 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 "" tagbar 
 "" =========================================
 nmap <F8> :TagbarToggle<CR>
+"" =========================================
+"" =========================================
+"
+"" =========================================
+"" Syntastic 
+"" =========================================
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+let g:syntastic_shell = "/bin/sh"
+map <F9> :SyntasticToggleMode<CR>
+map <F10> :SyntasticCheck<CR>
 "" =========================================
 "" =========================================
 
