@@ -68,7 +68,7 @@ unset color_prompt force_color_prompt
 case "$TERM" in
 xterm*|rxvt*)
     #PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    PS1='\[\033[0;36m\][\u@\h:\w ] $ \[\033[0;00m\]'
+    PS1='\[\033[0;36m\][\u@\h:\w]$ \[\033[0;00m\]'
     ;;
 *)
     ;;
@@ -115,5 +115,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-    export TERM=xterm-256color
+export TERM=xterm-256color
 export PATH=~/.cabal/bin:/opt/cabal/1.20/bin:/opt/ghc/7.8.4/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
