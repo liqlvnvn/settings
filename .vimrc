@@ -151,3 +151,9 @@ set hlsearch
 set incsearch
 set ignorecase
 
+au FileType haskell call s:Haskell()
+function! s:Haskell()
+    set tabstop=2
+    set shiftwidth=2
+    set softtabstop=2
+endfunction
