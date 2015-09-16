@@ -155,6 +155,8 @@ set showmatch
 set hlsearch
 set incsearch
 set ignorecase
+" Highlight background after 80 symbol
+execute "set colorcolumn=" . join(range(81,335), ',')
 " Press Space to turn off highlighting and clear any message already
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
