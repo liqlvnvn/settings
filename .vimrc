@@ -19,6 +19,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'majutsushi/tagbar'
 "" Syntax highlight
 Plugin 'davidhalter/jedi-vim'
@@ -62,6 +63,9 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "How can I map a specific key or shortcut to open NERDTree?
 map <F12> :NERDTreeToggle<CR>
+
+let NERDTreeShowHidden=1
+let NERDTreeSortHiddenFirst=1
 "" =========================================
 "" =========================================
 
