@@ -13,7 +13,7 @@ call vundle#begin()
 
 "репозитории на github
 Plugin 'gmarik/Vundle.vim'
-"Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 "" Panels
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
