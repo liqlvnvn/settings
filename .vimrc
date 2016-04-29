@@ -31,7 +31,8 @@ Plugin 'Raimondi/delimitMate'
 "" Languages support
 Plugin 'https://github.com/raichoo/haskell-vim'
 Plugin 'https://github.com/altercation/vim-colors-solarized.git'
-Plugin 'https://github.com/ap/vim-templates'
+"" Plugin 'https://github.com/ap/vim-templates'
+"" Plugin 'haskell.vim'
 
 call vundle#end()
 
@@ -75,6 +76,8 @@ let NERDTreeSortHiddenFirst=1
 let g:airline_theme='solarized'
 let g:airline#extensions#capslock#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+set list          " Display unprintable characters f12 - switches
+set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
 "" =========================================
 "" =========================================
 
@@ -113,6 +116,19 @@ map <F9> :SyntasticToggleMode<CR>
 map <F10> :SyntasticCheck<CR>
 "" =========================================
 "" =========================================
+
+"" =========================================
+"" Haskell Vim 
+"" =========================================
+let g:haskell_enable_quantification = 1
+let g:haskell_enable_recursivedo = 1
+let g:haskell_enable_arrowsyntax = 1
+let g:haskell_enable_pattern_synonyms = 1
+let g:haskell_enable_typeroles = 1
+let g:haskell_enable_static_pointers = 1
+"" =========================================
+"" =========================================
+
 
 syntax on
 set background=dark "actually it's will be light. 
