@@ -8,7 +8,7 @@
 (setq auto-save-list-file-name  nil) ; Don't want any .saves files
 (setq auto-save-default         nil) ; Don't want any auto saving
 
-(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "/home/fedora/.emacs.d/lisp")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; http://stable.melpa.org
@@ -24,9 +24,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; http://code.google.com/p/dea/source/browse/trunk/my-lisps/linum%2B.el
-(require 'linum+)
-(setq linum-format "%d ")
-(global-linum-mode 1)
+;;(require 'linum+)
+;;(setq linum-format "%d ")
+;;(global-linum-mode 1)
 
 ;; built-in
 (require 'ido)

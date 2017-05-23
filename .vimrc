@@ -16,7 +16,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 "" Panels
 Plugin 'scrooloose/nerdtree'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -33,6 +33,7 @@ Plugin 'https://github.com/raichoo/haskell-vim'
 Plugin 'https://github.com/altercation/vim-colors-solarized.git'
 "" Plugin 'https://github.com/ap/vim-templates'
 "" Plugin 'haskell.vim'
+Plugin 'vim-airline/vim-airline-themes'
 
 call vundle#end()
 
@@ -55,11 +56,11 @@ filetype plugin indent on     " обязательно!
 "" NERDTree 
 "" =========================================
 "How can I open a NERDTree automatically when vim starts up?
-autocmd vimenter * NERDTree 
+"autocmd vimenter * NERDTree 
 "How can I open a NERDTree automatically when vim starts up if no files were
 "specified?
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "Q. How can I close vim if the only window left open is a NERDTree?
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 "How can I map a specific key or shortcut to open NERDTree?
@@ -131,7 +132,7 @@ let g:haskell_enable_static_pointers = 1
 
 
 syntax on
-set background=dark "actually it's will be light. 
+set background=light "actually it's will be light. 
                     "but it should be reverse to terminal theme
 "set t_Co=256
 "let g:solarized_termcolors=256
@@ -198,3 +199,5 @@ if has("gui_running")
     colorscheme solarized
     set guifont=DejaVu\ Sans\ Mono\ 12
 endif
+
+set cm=blowfish2
