@@ -132,7 +132,7 @@ let g:haskell_enable_static_pointers = 1
 
 
 syntax on
-set background=light "actually it's will be light. 
+set background=dark "actually it's will be light. 
                     "but it should be reverse to terminal theme
 "set t_Co=256
 "let g:solarized_termcolors=256
@@ -200,4 +200,4 @@ if has("gui_running")
     set guifont=DejaVu\ Sans\ Mono\ 12
 endif
 
-set cm=blowfish2
+set cm=blowfish
