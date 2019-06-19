@@ -201,3 +201,8 @@ if has("gui_running")
 endif
 
 set cm=blowfish
+
+" Binding for copying and paste from + register
+set clipboard=unnamedplus
+map  <C-v> <ESC>"+P
+vmap <C-c> "*y<ESC><ESC> :let @+=@*<CR>
