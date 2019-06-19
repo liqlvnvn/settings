@@ -206,3 +206,5 @@ set cm=blowfish
 set clipboard=unnamedplus
 map  <C-v> <ESC>"+P
 vmap <C-c> "*y<ESC><ESC> :let @+=@*<CR>
+" Bind for selecting whole file
+map  <C-a> <esc>ggVG<CR>
