@@ -5,7 +5,8 @@ red=$(tput setaf 1)
 blue=$(tput setaf 4)
 green=$(tput setaf 2)
 
-PS1='\n \[$red\]\u\[$reset\] \[$blue\]\w\[$reset\] \[$red\]\$ \[$reset\]\[$green\] \n '
+#PS1='\n \[$red\]\u\[$reset\] \[$blue\]\w\[$reset\] \[$red\]\$ \[$reset\]\[$green\] \n '
+PS1='\n \[$blue\]\w\[$reset\] \[$red\]\$ \[$reset\]\[$green\] \n '
 
 
 # Use bash-completion, if available
@@ -23,3 +24,5 @@ trap 'echo -ne "\033]2;$(history 1 | sed "s/^[ ]*[0-9]*[ ]*//g")\007"' DEBUG
 export PATH=$PATH:/home/lubuntu/.local/bin
 eval "$(stack --bash-completion-script stack)"
 
+alias yt='youtube-dl --format webm'
+alias ytu='sudo pip3 install -U youtube-dl'
