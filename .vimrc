@@ -35,6 +35,7 @@ Plugin 'https://github.com/altercation/vim-colors-solarized.git'
 "" Plugin 'haskell.vim'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ledger/vim-ledger'
+Plugin 'vim-voom/VOoM'
 
 call vundle#end()
 
@@ -213,3 +214,4 @@ map  <C-a> <esc>ggVG<CR>
 
 " Disable 80+ highligthing column in common text files.
 autocmd BufNewFile,BufRead *.txt,*.md set cc=0
+autocmd BufNewFile,BufRead *.md Voom markdown
