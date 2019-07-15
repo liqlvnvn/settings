@@ -34,6 +34,7 @@ Plugin 'https://github.com/altercation/vim-colors-solarized.git'
 "" Plugin 'https://github.com/ap/vim-templates'
 "" Plugin 'haskell.vim'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ledger/vim-ledger'
 
 call vundle#end()
 
@@ -127,6 +128,16 @@ let g:haskell_enable_arrowsyntax = 1
 let g:haskell_enable_pattern_synonyms = 1
 let g:haskell_enable_typeroles = 1
 let g:haskell_enable_static_pointers = 1
+
+" Специальные настройки отступов для Haskell
+au FileType haskell call s:Haskell()
+function! s:Haskell()
+    set tabstop=2
+    set shiftwidth=2
+    set softtabstop=2
+endfunction
+
+
 "" =========================================
 "" =========================================
 
@@ -182,15 +193,6 @@ execute "set colorcolumn=" . join(range(81,335), ',')
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-" Специальные настройки отступов для Haskell
-au FileType haskell call s:Haskell()
-function! s:Haskell()
-    set tabstop=2
-    set shiftwidth=2
-    set softtabstop=2
-endfunction
-
-
 if has("gui_running")
     set background=light "actually it's will be light. 
                         "but it should be reverse to terminal theme    
@@ -208,3 +210,6 @@ map  <C-v> <ESC>"+P
 vmap <C-c> "*y<ESC><ESC> :let @+=@*<CR>
 " Bind for selecting whole file
 map  <C-a> <esc>ggVG<CR>
+
+" Disable 80+ highligthing column in common text files.
+autocmd BufNewFile,BufRead *.txt,*.md set cc=0
