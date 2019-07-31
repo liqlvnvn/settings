@@ -1,4 +1,8 @@
 auto-reload yes
+unbind-key l
+bind-key ; toggle-show-read-feeds
+bind-key l open
+bind-key h quit
 bind-key j down
 bind-key k up
 browser "firefox %u"
