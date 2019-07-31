@@ -1,8 +1,8 @@
 auto-reload yes
-bind-key j up
-bind-key k down
+bind-key j down
+bind-key k up
 browser "firefox %u"
-color listfocus           red white   bold
-color listfocus_unread    magenta white   bold
-color info                yellow  white   protect
+color listfocus red white bold
+color listfocus_unread magenta white   bold
+color info yellow white protect
 notify-xterm yes
