@@ -1,6 +1,8 @@
 auto-reload yes
 unbind-key l
 bind-key ; toggle-show-read-feeds
+unbind-key N
+bind-key u toggle-article-read
 bind-key l open
 bind-key h quit
 bind-key j down
@@ -9,4 +11,5 @@ browser "firefox %u"
 color listfocus red white bold
 color listfocus_unread magenta white   bold
 color info yellow white protect
+show-read-articles no
 notify-xterm yes
