@@ -195,8 +195,8 @@ execute "set colorcolumn=" . join(range(81,335), ',')
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 if has("gui_running")
-    set background=light "actually it's will be light. 
-                        "but it should be reverse to terminal theme    
+    set background=light "actually it's will be light.
+                         "but it should be reverse to terminal theme
     set t_Co=256
     let g:solarized_termcolors=256
     colorscheme solarized
@@ -207,8 +207,8 @@ set cm=blowfish
 
 " Binding for copying and paste from + register
 set clipboard=unnamedplus
-map  <C-v> <ESC>"+P
-vmap <C-c> "*y<ESC><ESC> :let @+=@*<CR>
+map <C-p> <ESC>"+P
+vmap <C-S-c> "*y<ESC><ESC> :let @+=@*<CR>
 " Bind for selecting whole file
 map  <C-a> <esc>ggVG<CR>
 
