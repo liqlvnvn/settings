@@ -80,7 +80,10 @@ let g:airline_theme='solarized'
 let g:airline#extensions#capslock#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 set list          " Display unprintable characters f12 - switches
-set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
+set listchars=tab:•\ ,trail:•,extends:»,precedes:« 
+"" Unprintable chars mapping
+" set showbreak=↪
+" set listchars=tab:→,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 "" =========================================
 "" =========================================
 
@@ -141,7 +144,6 @@ endfunction
 
 "" =========================================
 "" =========================================
-
 
 syntax on
 set background=light "actually it's will be light. 
@@ -223,3 +225,84 @@ vmap <C-S-c> "*y<ESC><ESC> :let @+=@*<CR>
 " Disable 80+ highligthing column in common text files.
 autocmd BufNewFile,BufRead *.txt,*.md set cc=0
 autocmd BufNewFile,BufRead *.md Voom markdown
+
+map ё `
+map й q
+map ц w
+map у e
+map к r
+map е t
+map н y
+map г u
+map ш i
+map щ o
+map з p
+map х [
+map ъ ]
+
+map ф a
+map ы s
+map в d
+map а f
+map п g
+map р h
+map о j
+map л k
+map д l
+map ж ;
+map э '
+
+map я z
+map ч x
+map с c
+map м v
+map и b
+map т n
+map ь m
+map б ,
+map ю .
+
+map Ё ~
+map Й Q
+map Ц W
+map У E
+map К R
+map Е T
+map Н Y
+map Г U
+map Ш I
+map Щ O
+map З P
+map Х {
+map Ъ }
+
+map Ф A
+map Ы S
+map В D
+map А F
+map П G
+map Р H
+map О J
+map Л K
+map Д L
+map Ж :
+map Э "
+
+map Я Z
+map Ч X
+map С C
+map М V
+map И B
+map Т N
+map Ь M
+map Б <
+map Ю >
+
+imap №№ #
+imap юю >
+imap бб <
+
+" Quick save
+" To easily save the current file, while keeping it open,
+" use a mapping in your vimrc:
+noremap <Leader>s :update<CR>
