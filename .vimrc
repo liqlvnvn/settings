@@ -188,6 +188,12 @@ set showmatch
 set hlsearch
 set incsearch
 set ignorecase
+
+" While working with file with long lines,
+" try to show as much as possible of the last line in the window
+" (rather than a column of "@", which is the default behavior).
+set display+=lastline
+
 " Highlight background after 80 symbol
 execute "set colorcolumn=" . join(range(81,335), ',')
 " Press Space to turn off highlighting and clear any message already
@@ -210,7 +216,7 @@ set clipboard=unnamedplus
 map <C-p> <ESC>"+P
 vmap <C-S-c> "*y<ESC><ESC> :let @+=@*<CR>
 " Bind for selecting whole file
-map  <C-a> <esc>ggVG<CR>
+" map  <C-a> <esc>ggVG<CR>
 
 " Disable 80+ highligthing column in common text files.
 autocmd BufNewFile,BufRead *.txt,*.md set cc=0
