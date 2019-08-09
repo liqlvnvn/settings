@@ -1,4 +1,5 @@
 auto-reload yes
+refresh-on-startup yes
 unbind-key l
 bind-key ; toggle-show-read-feeds
 unbind-key N
@@ -12,4 +13,5 @@ color listfocus red white bold
 color listfocus_unread magenta white   bold
 color info yellow white protect
 show-read-articles no
+show-read-feeds no
 notify-xterm yes
