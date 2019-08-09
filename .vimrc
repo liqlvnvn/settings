@@ -194,6 +194,8 @@ set ignorecase
 " (rather than a column of "@", which is the default behavior).
 set display+=lastline
 
+set linebreak
+
 " Highlight background after 80 symbol
 execute "set colorcolumn=" . join(range(81,335), ',')
 " Press Space to turn off highlighting and clear any message already
