@@ -21,8 +21,13 @@ export HISTIGNORE='history*'
 # while it's running
 trap 'echo -ne "\033]2;$(history 1 | sed "s/^[ ]*[0-9]*[ ]*//g")\007"' DEBUG
 
+# Set color settings for ls command
+LS_COLORS=$LS_COLORS:'di=1;35:'
+export LS_COLORS
+
 export PATH=$PATH:/home/lubuntu/.local/bin
 eval "$(stack --bash-completion-script stack)"
 
 alias yt='youtube-dl --format webm'
 alias ytu='sudo pip3 install -U youtube-dl'
+alias ls='ls --color=auto'
