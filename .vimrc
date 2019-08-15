@@ -162,6 +162,7 @@ set number
 set tabstop=4
 set shiftwidth=4
 set smarttab
+set cursorline
 set et "включаем автозамену по умолчанию
 set wrap "включаем перенос длинных строк
 set ai "включить автоотступы для новых строк
