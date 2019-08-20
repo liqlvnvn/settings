@@ -199,8 +199,6 @@ set display+=lastline
 
 set linebreak
 
-" Highlight background after 80 symbol
-execute "set colorcolumn=" . join(range(81,335), ',')
 " Press Space to turn off highlighting and clear any message already
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
@@ -223,8 +221,24 @@ vmap <C-S-c> "*y<ESC><ESC> :let @+=@*<CR>
 " Bind for selecting whole file
 " map  <C-a> <esc>ggVG<CR>
 
+" Highlight background after 80 symbol
+
 " Disable 80+ highligthing column in common text files.
-autocmd BufNewFile,BufRead *.txt,*.md set cc=0
+function! LongLines()
+    if &filetype == ""
+        set cc=0
+    elseif &filetype == "txt"
+        set cc=0
+    elseif &filetype == "foo"
+        set cc=0
+    else
+        execute "set colorcolumn=" . join(range(81,335), ',')
+    endif
+endfunction
+
+"autocmd BufNewFile,BufRead *.txt,*.md set cc=0
+autocmd BufNewFile,BufRead * call LongLines()
+
 autocmd BufNewFile,BufRead *.md Voom markdown
 
 map ё `
