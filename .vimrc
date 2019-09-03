@@ -1,5 +1,5 @@
 "" =========================================
-"" Vundle 
+"" Vundle
 "" =========================================
 
 " Set 'nocompatible' to ward off unexpected things that your distro might
@@ -55,7 +55,7 @@ filetype plugin indent on     " обязательно!
 "" =========================================
 
 "" =========================================
-"" NERDTree 
+"" NERDTree
 "" =========================================
 "How can I open a NERDTree automatically when vim starts up?
 "autocmd vimenter * NERDTree 
@@ -74,7 +74,7 @@ let NERDTreeSortHiddenFirst=1
 "" =========================================
 
 "" =========================================
-"" vim-airline 
+"" vim-airline
 "" =========================================
 let g:airline_theme='solarized'
 let g:airline#extensions#capslock#enabled = 1
@@ -88,7 +88,7 @@ set listchars=tab:•\ ,trail:•,extends:»,precedes:«
 "" =========================================
 
 "" =========================================
-"" ctrlp 
+"" ctrlp
 "" =========================================
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -98,14 +98,14 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 "" =========================================
 
 "" =========================================
-"" tagbar 
+"" tagbar
 "" =========================================
 nmap <F8> :TagbarToggle<CR>
 "" =========================================
 "" =========================================
 "
 "" =========================================
-"" Syntastic 
+"" Syntastic
 "" https://github.com/scrooloose/syntastic
 "" =========================================
 set statusline+=%#warningmsg#
@@ -124,7 +124,7 @@ map <F10> :SyntasticCheck<CR>
 "" =========================================
 
 "" =========================================
-"" Haskell Vim 
+"" Haskell Vim
 "" =========================================
 let g:haskell_enable_quantification = 1
 let g:haskell_enable_recursivedo = 1
@@ -146,7 +146,7 @@ endfunction
 "" =========================================
 
 syntax on
-set background=light "actually it's will be light. 
+set background=light "actually it's will be light.
                     "but it should be reverse to terminal theme
 "set t_Co=256
 "let g:solarized_termcolors=256
@@ -154,9 +154,9 @@ set background=light "actually it's will be light.
 "g:solarized_degrade = 0 | 1 
 "g:solarized_bold = 1 | 0 
 "g:solarized_underline = 1 | 0 
-"g:solarized_italic = 1 | 0 
-"g:solarized_contrast = "normal"| "high" or "low" 
-"g:solarized_visibility= "normal"| "high" or "low" 
+"g:solarized_italic = 1 | 0
+"g:solarized_contrast = "normal"| "high" or "low"
+"g:solarized_visibility= "normal"| "high" or "low"
 colo solarized
 set number
 set tabstop=4
@@ -227,92 +227,121 @@ vmap <C-S-c> "*y<ESC><ESC> :let @+=@*<CR>
 function! LongLines()
     if &filetype == ""
         set cc=0
-    elseif &filetype == "txt"
+    elseif &filetype == "text"
         set cc=0
-    elseif &filetype == "foo"
+    elseif &filetype == "markdown"
         set cc=0
     else
         execute "set colorcolumn=" . join(range(81,335), ',')
     endif
 endfunction
 
-"autocmd BufNewFile,BufRead *.txt,*.md set cc=0
 autocmd BufNewFile,BufRead * call LongLines()
 
-autocmd BufNewFile,BufRead *.md Voom markdown
+function! VoomInit(file_format)
+    :call voom#Init(fileformat)
+endfunction
 
-map ё `
-map й q
-map ц w
-map у e
-map к r
-map е t
-map н y
-map г u
-map ш i
-map щ o
-map з p
-map х [
-map ъ ]
+autocmd BufNewFile,BufRead *.md,*.mkd :call voom#Init('markdown',0,1)
+autocmd BufNewFile,BufRead *.tex :Voom latex
+autocmd BufUnload *.md,*.mkd,*.tex :VoomToggle<bar>:q
 
-map ф a
-map ы s
-map в d
-map а f
-map п g
-map р h
-map о j
-map л k
-map д l
-map ж ;
-map э '
+" map ё `
+" map й q
+" map ц w
+" map у e
+" map к r
+" map е t
+" map н y
+" map г u
+" map ш i
+" map щ o
+" map з p
+" map х [
+" map ъ ]
+" 
+" map ф a
+" map ы s
+" map в d
+" map а f
+" map п g
+" map р h
+" map о j
+" map л k
+" map д l
+" map ж ;
+" map э '
+" 
+" map я z
+" map ч x
+" map с c
+" map м v
+" map и b
+" map т n
+" map ь m
+" map б ,
+" map ю .
+" 
+" map Ё ~
+" map Й Q
+" map Ц W
+" map У E
+" map К R
+" map Е T
+" map Н Y
+" map Г U
+" map Ш I
+" map Щ O
+" map З P
+" map Х {
+" map Ъ }
+" 
+" map Ф A
+" map Ы S
+" map В D
+" map А F
+" map П G
+" map Р H
+" map О J
+" map Л K
+" map Д L
+" map Ж :
+" map Э "
+" 
+" map Я Z
+" map Ч X
+" map С C
+" map М V
+" map И B
+" map Т N
+" map Ь M
+" map Б <
+" map Ю >
+" 
+"
 
-map я z
-map ч x
-map с c
-map м v
-map и b
-map т n
-map ь m
-map б ,
-map ю .
+" Second way to map russian keys
+set langmap=ёйцукенгшщзхъфывапролджэячсмитьбюЁЙЦУКЕHГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.~QWERTYUIOP{}ASDFGHJKL:\\"ZXCVBNM<>
 
-map Ё ~
-map Й Q
-map Ц W
-map У E
-map К R
-map Е T
-map Н Y
-map Г U
-map Ш I
-map Щ O
-map З P
-map Х {
-map Ъ }
-
-map Ф A
-map Ы S
-map В D
-map А F
-map П G
-map Р H
-map О J
-map Л K
-map Д L
-map Ж :
-map Э "
-
-map Я Z
-map Ч X
-map С C
-map М V
-map И B
-map Т N
-map Ь M
-map Б <
-map Ю >
-
+" function! RestoreKeyboardLayout(key)
+"   call system('xkb-switch -s us')
+"   execute 'normal! ' . a:key
+" endfunction
+" 
+" nnoremap <silent> р :call RestoreKeyboardLayout('h')<CR>
+" nnoremap <silent> о :call RestoreKeyboardLayout('j')<CR>
+" nnoremap <silent> л :call RestoreKeyboardLayout('k')<CR>
+" nnoremap <silent> д :call RestoreKeyboardLayout('l')<CR>
+" nnoremap <silent> Ж :call RestoreKeyboardLayout(':')<CR>
+" 
+" let g:XkbSwitchIMappingsTr = {
+"       \ 'ru':
+"       \ {'<': 'qwertyuiop[]asdfghjkl;''zxcvbnm,.`/'.
+"       \       'QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>?~@#$^&|',
+"       \  '>': 'йцукенгшщзхъфывапролджэячсмитьбюё.'.
+"       \       'ЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ,Ё"№;:?/'}
+"       \ }
+" 
 imap №№ #
 imap юю >
 imap бб <
@@ -321,3 +350,8 @@ imap бб <
 " To easily save the current file, while keeping it open,
 " use a mapping in your vimrc:
 noremap <Leader>s :update<CR>
+cmap ц w
+cmap й q
+cmap ф a
+cmap ы s
+
