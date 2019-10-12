@@ -14,4 +14,6 @@ color listfocus_unread magenta white   bold
 color info yellow white protect
 show-read-articles no
 show-read-feeds no
+openbrowser-and-mark-jumps-to-next-unread yes
+open-all-unread-in-browser-and-mark-read O
 notify-xterm yes
