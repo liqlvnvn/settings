@@ -38,7 +38,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ledger/vim-ledger'
 Plugin 'vim-voom/voom'
 Plugin 'lervag/vimtex'
-Plug 'sirver/ultisnips'
+Plugin 'sirver/ultisnips'
 call vundle#end()
 
 filetype plugin indent on     " обязательно!
@@ -376,64 +376,3 @@ let g:tex_conceal='abdmg'
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-snippet sign "Signature"
-Yours sincerely,
-
-Gilles Castel
-endsnippet
-
-snippet today "Date"
-`date +%F`
-endsnippet
-
-snippet box "Box"
-`!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
-│ $1 │
-`!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
-$0
-endsnippet
-
-snippet beg "begin{} / end{}" bA
-\begin{$1}
-    $0
-\end{$1}
-endsnippet
-
-snippet mk "Math" wA
-$${1}$`!p
-if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
-    snip.rv = ' '
-else:
-    snip.rv = ''
-`$2
-endsnippet
-
-snippet dm "Math" wA
-\[
-$1
-.\] $0
-endsnippet
-
-snippet '([A-Za-z])(\d)' "auto subscript" wrA
-`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
-endsnippet
-
-snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
-`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
-endsnippet
-
-snippet sr "^2" iA
-^2
-endsnippet
-
-snippet cb "^3" iA
-^3
-endsnippet
-
-snippet compl "complement" iA
-^{c}
-endsnippet
-
-snippet td "superscript" iA
-^{$1}$0
-endsnippet
