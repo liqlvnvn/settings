@@ -1,3 +1,10 @@
+neofetch
+
+PLAN9=/usr/local/plan9
+export PLAN9
+PATH=$PATH:$PLAN9/bin
+export PATH
+
 #PS1='[\u@\h \W]\$ '  # Закомментируйте значение по умолчанию
 #DO NOT USE RAW ESCAPES, USE TPUT
 reset=$(tput sgr0)
