@@ -82,7 +82,7 @@ let g:airline_theme='solarized'
 let g:airline#extensions#capslock#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 set list          " Display unprintable characters f12 - switches
-set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
+set listchars=tab:▸\ ,eol:¬,trail:•,extends:»,precedes:« " Unprintable chars mapping
 "" =========================================
 "" =========================================
 
