@@ -1,4 +1,6 @@
 set encoding=utf-8
+" Plugins {{{1
+" Vundle {{{2
 "" =========================================
 "" Vundle 
 "" =========================================
@@ -52,10 +54,8 @@ filetype plugin indent on     " обязательно!
 ""  auto-approve removal
 ""
 "" see :h vundle for more details or wiki for FAQ"
-""
-"" =========================================
-"" =========================================
-
+" }}}
+" NERDTree {{{2
 "" =========================================
 "" NERDTree 
 "" =========================================
@@ -74,7 +74,8 @@ let NERDTreeShowHidden=1
 let NERDTreeSortHiddenFirst=1
 "" =========================================
 "" =========================================
-
+" }}}
+" vim-airline {{{2
 "" =========================================
 "" vim-airline 
 "" =========================================
@@ -85,7 +86,8 @@ set list          " Display unprintable characters f12 - switches
 set listchars=tab:▸\ ,eol:¬,trail:•,extends:»,precedes:« " Unprintable chars mapping
 "" =========================================
 "" =========================================
-
+" }}}
+" ctrlp {{{2
 "" =========================================
 "" ctrlp 
 "" =========================================
@@ -95,14 +97,16 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 "" =========================================
 "" =========================================
-
+" }}}
+"tagbar {{{2
 "" =========================================
 "" tagbar 
 "" =========================================
 nmap <F8> :TagbarToggle<CR>
 "" =========================================
 "" =========================================
-"
+" }}}
+" Syntastic {{{2
 "" =========================================
 "" Syntastic 
 "" https://github.com/scrooloose/syntastic
@@ -121,7 +125,9 @@ map <F9> :SyntasticToggleMode<CR>
 map <F10> :SyntasticCheck<CR>
 "" =========================================
 "" =========================================
-
+" }}}
+" Haskell Vim {{{2
+"
 "" =========================================
 "" Haskell Vim 
 "" =========================================
@@ -133,7 +139,8 @@ let g:haskell_enable_typeroles = 1
 let g:haskell_enable_static_pointers = 1
 "" =========================================
 "" =========================================
-
+" }}}
+" }}}
 
 syntax on
 set background=dark "actually it's will be light. 
@@ -149,6 +156,7 @@ set background=dark "actually it's will be light.
 "g:solarized_visibility= "normal"| "high" or "low" 
 colo solarized
 set mouse=a
+set foldmethod=marker
 set title
 set relativenumber
 set cursorline
@@ -377,3 +385,5 @@ let g:tex_conceal='abdmg'
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+" }}} vim: fdm=marker
