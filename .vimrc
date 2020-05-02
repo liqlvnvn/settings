@@ -148,6 +148,7 @@ set background=dark "actually it's will be light.
 "g:solarized_contrast = "normal"| "high" or "low" 
 "g:solarized_visibility= "normal"| "high" or "low" 
 colo solarized
+set mouse=a
 set title
 set relativenumber
 set cursorline
