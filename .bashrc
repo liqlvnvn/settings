@@ -1,5 +1,3 @@
-neofetch
-
 PLAN9=/usr/local/plan9
 export PLAN9
 PATH=$PATH:$PLAN9/bin
@@ -38,3 +36,5 @@ eval "$(stack --bash-completion-script stack)"
 alias yt='youtube-dl --format webm'
 alias ytu='sudo pip3 install -U youtube-dl'
 alias ls='ls --color=auto'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
