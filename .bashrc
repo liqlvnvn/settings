@@ -36,5 +36,21 @@ eval "$(stack --bash-completion-script stack)"
 alias yt='youtube-dl --format webm'
 alias ytu='sudo pip3 install -U youtube-dl'
 alias ls='ls --color=auto'
+alias ha='hledger add'
+alias hp='hledger print'
+alias off='sudo poweroff'
+alias update='sudo apt update && sudo apt upgrade'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Coloring man pages
+# Using this advices
+# https://www.tecmint.com/view-colored-man-pages-in-linux/
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+

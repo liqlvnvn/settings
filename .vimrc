@@ -41,6 +41,11 @@ Plugin 'ledger/vim-ledger'
 Plugin 'vim-voom/voom'
 Plugin 'lervag/vimtex'
 Plugin 'sirver/ultisnips'
+Plugin 'vimwiki/vimwiki'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'michal-h21/vim-zettel'
+
 call vundle#end()
 
 filetype plugin indent on     " обязательно!
