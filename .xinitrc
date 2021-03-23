@@ -7,6 +7,7 @@ setxkbmap -layout us,ru -option grp:alt_shift_toggle
 nitrogen --restore &
 sxhkd &
 redshift &
+dunst &
 brave &
 dropbox-cli start &
 telegram-desktop &
