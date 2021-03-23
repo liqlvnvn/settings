@@ -1,6 +1,6 @@
 PLAN9=/usr/local/plan9
 export PLAN9
-PATH=$PATH:$PLAN9/bin
+PATH=$PATH:$PLAN9/bin:$HOME/.local/statusbar
 export PATH
 
 #PS1='[\u@\h \W]\$ '  # Закомментируйте значение по умолчанию
@@ -40,7 +40,7 @@ alias ha='hledger add'
 alias hp='hledger print'
 alias off='sudo poweroff'
 alias update='sudo apt update && sudo apt upgrade'
-alias config='/usr/bin/git --git-dir=$HOME/soft/settings --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/soft/settings.git --work-tree=$HOME'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -55,3 +55,12 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
+#if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+      #exec startx
+#fi
+
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_DATA_DIRS=/usr/local/share:/usr/share
+export XDG_CONFIG_DIRS=/etc/xdg
