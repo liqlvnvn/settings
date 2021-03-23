@@ -1,0 +1,10 @@
+super + F2
+    xbacklight -dec 10
+super + F3
+    xbacklight -inc 10
+super + F4
+    sleep 1 && xset dpms force off
+super + F7
+    amixer sset Master 10%-
+super + F8
+    amixer sset Master 10%+
