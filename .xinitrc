@@ -2,7 +2,7 @@ cd ~
 #xrandr --setprovideroutputsource modesetting NVIDIA-0 &
 #xrandr --auto &
 setxkbmap -layout us,ru -option grp:alt_shift_toggle
-picom &
+#picom &
 nitrogen --restore &
 sxhkd &
 redshift &
