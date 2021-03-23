@@ -40,7 +40,7 @@ alias ha='hledger add'
 alias hp='hledger print'
 alias off='sudo poweroff'
 alias update='sudo apt update && sudo apt upgrade'
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/soft/settings --work-tree=$HOME'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
