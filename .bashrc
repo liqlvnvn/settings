@@ -3,8 +3,6 @@ export EDITOR="/usr/bin/vim"
 export VISUAL="/usr/bin/vim"
 export SHELL="/usr/bin/bash"
 export BROWSER="/usr/bin/brave"
-export TERM="/usr/bin/alacritty"
-
 
 PLAN9=/usr/local/plan9
 export PLAN9
