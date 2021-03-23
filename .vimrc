@@ -146,6 +146,7 @@ let g:haskell_enable_static_pointers = 1
 "" =========================================
 " }}}
 " }}}
+"
 
 " Shortcuts
 " CTRL-Tab is next tab
@@ -245,7 +246,7 @@ set cm=blowfish
 " Binding for copying and paste from + register
 set clipboard=unnamedplus
 map <C-p> <ESC>"+P
-vmap <C-S-c> "*y<ESC><ESC> :let @+=@*<CR>
+vmap <C-c> "*y<ESC><ESC> :let @+=@*<CR>
 " Bind for selecting whole file
 " map  <C-a> <esc>ggVG<CR>
 
