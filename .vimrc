@@ -45,6 +45,8 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'michal-h21/vim-zettel'
+Plugin 'fatih/vim-go'
+
 
 call vundle#end()
 
