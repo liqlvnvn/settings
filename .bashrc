@@ -8,7 +8,8 @@ PLAN9=/usr/local/plan9
 export PLAN9
 PATH=$PATH:$PLAN9/bin:$HOME/.local/statusbar
 export PATH
-export PATH=$PATH:/usr/local/go/bin
+# Add Golang bin path to PATH
+export PATH=$PATH:/usr/local/go/bin:~/.local/bin
 
 
 #PS1='[\u@\h \W]\$ '  # Закомментируйте значение по умолчанию
