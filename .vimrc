@@ -190,7 +190,7 @@ set expandtab
 set shiftround                  "Round indent to nearest shiftwidth multiple
 set softtabstop=4               "Insert 4 spaces when tab is pressed
 " Игнорирует autoindent при вставки из буфера
-set nopaste
+set paste
 set pastetoggle=<F2>
 " Better command-line completion
 set wildmenu
