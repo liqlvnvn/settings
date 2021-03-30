@@ -181,14 +181,14 @@ set cursorline
 set number
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4               "Insert 4 spaces when tab is pressed
 set smarttab
+set expandtab
+set shiftround                  "Round indent to nearest shiftwidth multiple
 set et "включаем автозамену по умолчанию
 set wrap "включаем перенос длинных строк
 set ai "включить автоотступы для новых строк
 "set cin "включить отступы в стиле C
-set expandtab 
-set shiftround                  "Round indent to nearest shiftwidth multiple
-set softtabstop=4               "Insert 4 spaces when tab is pressed
 " Игнорирует autoindent при вставки из буфера
 set paste
 set pastetoggle=<F2>
