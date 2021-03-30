@@ -10,6 +10,7 @@ PATH=$PATH:$PLAN9/bin:$HOME/.local/statusbar
 export PATH
 # Add Golang bin path to PATH
 export PATH=$PATH:/usr/local/go/bin:~/.local/bin
+export GOPATH=$HOME:~/projects/go
 
 
 #PS1='[\u@\h \W]\$ '  # Закомментируйте значение по умолчанию
