@@ -13,9 +13,13 @@ case $BLOCK_BUTTON in
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
-[ "$(amixer get Master | sed 5q | grep '\[on\]')" = "1" ] && echo 🔇 && exit
+# Alsa version of commands
+#[ "$(amixer get Master | sed 5q | grep '\[on\]')" = "1" ] && echo 🔇 && exit
+#vol="$(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master) | sed 's/%//')"
 
-vol="$(awk -F"[][]" '/dB/ { print $2 }' <(amixer sget Master) | sed 's/%//')"
+# Pulse version
+[ $(pamixer --get-mute) = true ] && echo 🔇 && exit
+vol="$(pamixer --get-volume)"
 
 if [[ $vol -gt 70 ]]; then
 	icon="🔊"
