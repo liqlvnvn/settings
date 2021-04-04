@@ -9,7 +9,7 @@ export PLAN9
 PATH=$PATH:$PLAN9/bin:$HOME/.local/statusbar
 export PATH
 # Add Golang bin path to PATH
-export PATH=$PATH:/usr/local/go/bin:~/.local/bin
+export PATH=$PATH:/usr/local/go/bin:~/.local/bin:~/projects/go/bin
 export GOPATH=$HOME:~/projects/go
 
 
