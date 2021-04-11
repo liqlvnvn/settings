@@ -1,3 +1,8 @@
+" zc                        свернуть блок
+" zo                        развернуть блок
+" zM                        закрыть все блоки
+" zR                        открыть все блоки
+
 set encoding=utf-8
 " Plugins {{{1
 " Vundle {{{2
@@ -146,6 +151,20 @@ let g:haskell_enable_typeroles = 1
 let g:haskell_enable_static_pointers = 1
 "" =========================================
 "" =========================================
+
+" Специальные настройки отступов для Haskell
+au FileType haskell call s:Haskell()
+function! s:Haskell()
+    set tabstop=2
+    set shiftwidth=2
+    set softtabstop=2
+endfunction
+" }}}
+" Golang {{{2
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
 " }}}
 " }}}
 "
@@ -222,13 +241,6 @@ set display+=lastline
 
 set linebreak
 
-" Специальные настройки отступов для Haskell
-au FileType haskell call s:Haskell()
-function! s:Haskell()
-    set tabstop=2
-    set shiftwidth=2
-    set softtabstop=2
-endfunction
 
 " Press Space to turn off highlighting and clear any message already
 " displayed.
