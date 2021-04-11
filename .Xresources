@@ -76,3 +76,15 @@
 *color7:                S_base2
 *color15:               S_base3
 
+
+!! Setting for dpi and graphics
+!! Taken from https://wiki.archlinux.org/index.php/HiDPI
+Xft.dpi: 125
+
+! These might also be useful depending on your monitor and personal preference:
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
