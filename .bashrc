@@ -1,4 +1,4 @@
-export PAGER="/usr/bin/most -s"
+export PAGER="/usr/bin/less"
 export EDITOR="/usr/bin/vim"
 export VISUAL="/usr/bin/vim"
 export SHELL="/usr/bin/bash"
