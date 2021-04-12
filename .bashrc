@@ -4,10 +4,12 @@ export VISUAL="/usr/bin/vim"
 export SHELL="/usr/bin/bash"
 export BROWSER="/usr/bin/brave"
 
-PLAN9=/usr/local/plan9
-export PLAN9
-PATH=$PATH:$PLAN9/bin:$HOME/.local/statusbar
-export PATH
+export PLAN9=/usr/local/plan9
+export PATH=$PATH:$PLAN9/bin
+
+# dwmblocks utils
+export PATH=$PATH:$HOME/.local/statusbar
+
 # Add Golang bin path to PATH
 export PATH=$PATH:/usr/local/go/bin:~/.local/bin:~/projects/go/bin
 export GOPATH=$HOME/projects/go
