@@ -3,7 +3,92 @@
 " zM                        закрыть все блоки
 " zR                        открыть все блоки
 
+" General {{{1
 set encoding=utf-8
+syntax on
+set mouse=a
+set foldmethod=marker
+" Для установки плагинов
+set shell=/bin/bash
+set cm=blowfish
+" }}}
+" Appearance {{{1
+colo solarized
+set background=light "actually it's will be light. 
+                    "but it should be reverse to terminal theme
+"set t_Co=256
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans = 0 | 1 
+"g:solarized_degrade = 0 | 1 
+"g:solarized_bold = 1 | 0 
+"g:solarized_underline = 1 | 0 
+"g:solarized_italic = 1 | 0 
+"g:solarized_contrast = "normal"| "high" or "low" 
+"g:solarized_visibility= "normal"| "high" or "low" 
+
+set title
+set relativenumber
+set cursorline
+" Display the cursor position on the last line of the screen or in the status
+" line of a window
+set ruler
+" Always display the status line, even if only one window is displayed
+set laststatus=2
+" While working with file with long lines,
+" try to show as much as possible of the last line in the window
+" (rather than a column of "@", which is the default behavior).
+set display+=lastline
+
+" Highlight background after 80 symbol {{{1
+execute "set colorcolumn=" . join(range(81,335), ',')
+
+" Disable 80+ highligthing column in common text files.
+function! LongLines()
+
+    if &filetype == ""
+        set cc=0
+    elseif &filetype == "text"
+        set cc=0
+    elseif &filetype == "markdown"
+        set cc=0
+    else
+        execute "set colorcolumn=" . join(range(81,335), ',')
+    endif
+endfunction
+
+autocmd BufNewFile,BufRead * call LongLines()
+
+function! VoomInit(file_format)
+    :call voom#Init(fileformat)
+endfunction
+" }}}
+" Behavior {{{1
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4               "Insert 4 spaces when tab is pressed
+set smarttab
+set expandtab
+set shiftround                  "Round indent to nearest shiftwidth multiple
+set et "включаем автозамену по умолчанию
+set wrap "включаем перенос длинных строк
+set ai "включить автоотступы для новых строк
+"set cin "включить отступы в стиле C
+" Игнорирует autoindent при вставки из буфера
+set paste
+" Better command-line completion
+set wildmenu
+set linebreak
+" }}}
+" Search {{{1
+" Show partial commands in the last line of the screen
+set showcmd
+set magic
+"Настройки поиска и подсветки результатов поиска
+set showmatch
+set hlsearch
+set incsearch
+set ignorecase
+" }}}
 " Plugins {{{1
 " Vundle {{{2
 "" =========================================
@@ -138,6 +223,32 @@ map <F10> :SyntasticCheck<CR>
 "" =========================================
 "" =========================================
 " }}}
+" vimtex {{{2
+"" =========================================
+"" vimtex 
+"" =========================================
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+" }}}
+" UltiSnips {{{2
+"" =========================================
+"" UltiSnips
+"" =========================================
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+" }}}
+" }}}
+" Languages and Formats {{{1
+" Markdown {{{2
+"autocmd BufNewFile,BufRead *.md,*.mkd :call voom#Init('markdown',0,1)
+autocmd BufNewFile,BufRead *.md,*.mkd :Voom markdown
+autocmd BufNewFile,BufRead *.tex :Voom latex
+autocmd BufUnload *.md,*.mkd,*.tex :VoomToggle<bar>:q
+" }}}
 " Haskell Vim {{{2
 "
 "" =========================================
@@ -167,9 +278,7 @@ au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 " }}}
 " }}}
-"
-
-" Shortcuts
+" Shortcuts {{{1
 " CTRL-Tab is next tab
 noremap <C-Tab> :<C-U>tabnext<CR>
 inoremap <C-Tab> <C-\><C-N>:tabnext<CR>
@@ -178,74 +287,23 @@ cnoremap <C-Tab> <C-C>:tabnext<CR>
 noremap <C-S-Tab> :<C-U>tabprevious<CR>
 inoremap <C-S-Tab> <C-\><C-N>:tabprevious<CR>
 cnoremap <C-S-Tab> <C-C>:tabprevious<CR>
+" Press Space to turn off highlighting and clear any message already
+" displayed.
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+" Binding for copying and paste from + register
+set clipboard=unnamedplus
+map <C-p> <ESC>"+P
+vmap <C-c> "*y<ESC><ESC> :let @+=@*<CR>
+" Bind for selecting whole file
+" map  <C-a> <esc>ggVG<CR>
+noremap <Leader>s :update<CR>
+" Press Space to turn off highlighting and clear any message already
+" displayed.
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
-syntax on
-set background=light "actually it's will be light. 
-                    "but it should be reverse to terminal theme
-"set t_Co=256
-"let g:solarized_termcolors=256
-"let g:solarized_termtrans = 0 | 1 
-"g:solarized_degrade = 0 | 1 
-"g:solarized_bold = 1 | 0 
-"g:solarized_underline = 1 | 0 
-"g:solarized_italic = 1 | 0 
-"g:solarized_contrast = "normal"| "high" or "low" 
-"g:solarized_visibility= "normal"| "high" or "low" 
-colo solarized
-set mouse=a
-set foldmethod=marker
-set title
-set relativenumber
-set cursorline
-set number
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4               "Insert 4 spaces when tab is pressed
-set smarttab
-set expandtab
-set shiftround                  "Round indent to nearest shiftwidth multiple
-set et "включаем автозамену по умолчанию
-set wrap "включаем перенос длинных строк
-set ai "включить автоотступы для новых строк
-"set cin "включить отступы в стиле C
-" Игнорирует autoindent при вставки из буфера
-set paste
 set pastetoggle=<F2>
-" Better command-line completion
-set wildmenu
-" Show partial commands in the last line of the screen
-set showcmd
-" Display the cursor position on the last line of the screen or in the status
-" line of a window
-set ruler
-" Always display the status line, even if only one window is displayed
-set laststatus=2
-" For regular expressions turn magic on
-set magic
-" Для установки плагинов
-set shell=/bin/bash 
-"Настройки поиска и подсветки результатов поиска
-set showmatch
-set hlsearch
-set incsearch
-set ignorecase
-" Highlight background after 80 symbol
-execute "set colorcolumn=" . join(range(81,335), ',')
-" Press Space to turn off highlighting and clear any message already
-" displayed.
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-" While working with file with long lines,
-" try to show as much as possible of the last line in the window
-" (rather than a column of "@", which is the default behavior).
-set display+=lastline
-
-set linebreak
-
-
-" Press Space to turn off highlighting and clear any message already
-" displayed.
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-
+" }}}
+" GUI {{{1
 if has("gui_running")
     set background=light "actually it's will be light.
                          "but it should be reverse to terminal theme
@@ -254,43 +312,8 @@ if has("gui_running")
     colorscheme solarized
     set guifont=DejaVu\ Sans\ Mono\ 12
 endif
-
-set cm=blowfish
-
-" Binding for copying and paste from + register
-set clipboard=unnamedplus
-map <C-p> <ESC>"+P
-vmap <C-c> "*y<ESC><ESC> :let @+=@*<CR>
-" Bind for selecting whole file
-" map  <C-a> <esc>ggVG<CR>
-
-" Highlight background after 80 symbol
-
-" Disable 80+ highligthing column in common text files.
-function! LongLines()
-
-    if &filetype == ""
-        set cc=0
-    elseif &filetype == "text"
-        set cc=0
-    elseif &filetype == "markdown"
-        set cc=0
-    else
-        execute "set colorcolumn=" . join(range(81,335), ',')
-    endif
-endfunction
-
-autocmd BufNewFile,BufRead * call LongLines()
-
-function! VoomInit(file_format)
-    :call voom#Init(fileformat)
-endfunction
-
-"autocmd BufNewFile,BufRead *.md,*.mkd :call voom#Init('markdown',0,1)
-autocmd BufNewFile,BufRead *.md,*.mkd :Voom markdown
-autocmd BufNewFile,BufRead *.tex :Voom latex
-autocmd BufUnload *.md,*.mkd,*.tex :VoomToggle<bar>:q
-
+" }}}
+" Russian {{{1
 " map ё `
 " map й q
 " map ц w
@@ -394,26 +417,10 @@ imap бб <
 " Quick save
 " To easily save the current file, while keeping it open,
 " use a mapping in your vimrc:
-noremap <Leader>s :update<CR>
 cmap ц w
 cmap й q
 cmap ф a
 cmap ы s
-
-"" =========================================
-"" vimtex 
-"" =========================================
-let g:tex_flavor='latex'
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
-
-"" =========================================
-"" UltiSnips
-"" =========================================
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+" }}}
 
 " }}} vim: fdm=marker
