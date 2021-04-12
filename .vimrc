@@ -12,83 +12,6 @@ set foldmethod=marker
 set shell=/bin/bash
 set cm=blowfish
 " }}}
-" Appearance {{{1
-colo solarized
-set background=light "actually it's will be light. 
-                    "but it should be reverse to terminal theme
-"set t_Co=256
-"let g:solarized_termcolors=256
-"let g:solarized_termtrans = 0 | 1 
-"g:solarized_degrade = 0 | 1 
-"g:solarized_bold = 1 | 0 
-"g:solarized_underline = 1 | 0 
-"g:solarized_italic = 1 | 0 
-"g:solarized_contrast = "normal"| "high" or "low" 
-"g:solarized_visibility= "normal"| "high" or "low" 
-
-set title
-set relativenumber
-set cursorline
-" Display the cursor position on the last line of the screen or in the status
-" line of a window
-set ruler
-" Always display the status line, even if only one window is displayed
-set laststatus=2
-" While working with file with long lines,
-" try to show as much as possible of the last line in the window
-" (rather than a column of "@", which is the default behavior).
-set display+=lastline
-
-" Highlight background after 80 symbol {{{1
-execute "set colorcolumn=" . join(range(81,335), ',')
-
-" Disable 80+ highligthing column in common text files.
-function! LongLines()
-
-    if &filetype == ""
-        set cc=0
-    elseif &filetype == "text"
-        set cc=0
-    elseif &filetype == "markdown"
-        set cc=0
-    else
-        execute "set colorcolumn=" . join(range(81,335), ',')
-    endif
-endfunction
-
-autocmd BufNewFile,BufRead * call LongLines()
-
-function! VoomInit(file_format)
-    :call voom#Init(fileformat)
-endfunction
-" }}}
-" Behavior {{{1
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4               "Insert 4 spaces when tab is pressed
-set smarttab
-set expandtab
-set shiftround                  "Round indent to nearest shiftwidth multiple
-set et "включаем автозамену по умолчанию
-set wrap "включаем перенос длинных строк
-set ai "включить автоотступы для новых строк
-"set cin "включить отступы в стиле C
-" Игнорирует autoindent при вставки из буфера
-set paste
-" Better command-line completion
-set wildmenu
-set linebreak
-" }}}
-" Search {{{1
-" Show partial commands in the last line of the screen
-set showcmd
-set magic
-"Настройки поиска и подсветки результатов поиска
-set showmatch
-set hlsearch
-set incsearch
-set ignorecase
-" }}}
 " Plugins {{{1
 " Vundle {{{2
 "" =========================================
@@ -242,6 +165,83 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 " }}}
 " }}}
+" Appearance {{{1
+colo solarized
+set background=light "actually it's will be light. 
+                    "but it should be reverse to terminal theme
+"set t_Co=256
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans = 0 | 1 
+"g:solarized_degrade = 0 | 1 
+"g:solarized_bold = 1 | 0 
+"g:solarized_underline = 1 | 0 
+"g:solarized_italic = 1 | 0 
+"g:solarized_contrast = "normal"| "high" or "low" 
+"g:solarized_visibility= "normal"| "high" or "low" 
+
+set title
+set relativenumber
+set cursorline
+" Display the cursor position on the last line of the screen or in the status
+" line of a window
+set ruler
+" Always display the status line, even if only one window is displayed
+set laststatus=2
+" While working with file with long lines,
+" try to show as much as possible of the last line in the window
+" (rather than a column of "@", which is the default behavior).
+set display+=lastline
+
+" Highlight background after 80 symbol {{{2
+execute "set colorcolumn=" . join(range(81,335), ',')
+
+" Disable 80+ highligthing column in common text files.
+function! LongLines()
+
+    if &filetype == ""
+        set cc=0
+    elseif &filetype == "text"
+        set cc=0
+    elseif &filetype == "markdown"
+        set cc=0
+    else
+        execute "set colorcolumn=" . join(range(81,335), ',')
+    endif
+endfunction
+
+autocmd BufNewFile,BufRead * call LongLines()
+
+function! VoomInit(file_format)
+    :call voom#Init(fileformat)
+endfunction
+" }}}
+" Behavior {{{1
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4               "Insert 4 spaces when tab is pressed
+set smarttab
+set expandtab
+set shiftround                  "Round indent to nearest shiftwidth multiple
+set et "включаем автозамену по умолчанию
+set wrap "включаем перенос длинных строк
+set ai "включить автоотступы для новых строк
+"set cin "включить отступы в стиле C
+" Игнорирует autoindent при вставки из буфера
+set paste
+" Better command-line completion
+set wildmenu
+set linebreak
+" }}}
+" Search {{{1
+" Show partial commands in the last line of the screen
+set showcmd
+set magic
+"Настройки поиска и подсветки результатов поиска
+set showmatch
+set hlsearch
+set incsearch
+set ignorecase
+" }}}
 " Languages and Formats {{{1
 " Markdown {{{2
 "autocmd BufNewFile,BufRead *.md,*.mkd :call voom#Init('markdown',0,1)
@@ -279,14 +279,13 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 " }}}
 " }}}
 " Shortcuts {{{1
-" CTRL-Tab is next tab
-noremap <C-Tab> :<C-U>tabnext<CR>
-inoremap <C-Tab> <C-\><C-N>:tabnext<CR>
-cnoremap <C-Tab> <C-C>:tabnext<CR>
-" CTRL-SHIFT-Tab is previous tab
-noremap <C-S-Tab> :<C-U>tabprevious<CR>
-inoremap <C-S-Tab> <C-\><C-N>:tabprevious<CR>
-cnoremap <C-S-Tab> <C-C>:tabprevious<CR>
+" Tab navigation like Firefox.
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew<CR>
+inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew<CR>
 " Press Space to turn off highlighting and clear any message already
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
