@@ -14,22 +14,17 @@ set cm=blowfish
 " }}}
 " Plugins {{{1
 " Vundle {{{2
-"" =========================================
-"" Vundle 
-"" =========================================
-
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc"
 set nocompatible
-
 filetype off  "обязательно!
-
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 "репозитории на github
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
+
 "" Panels
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-airline/vim-airline'
@@ -37,13 +32,16 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'majutsushi/tagbar'
+
 "" Syntax highlight
 Plugin 'davidhalter/jedi-vim'
+
 "" Syntax cheker
 Plugin 'scrooloose/syntastic'
 "Plugin 'tpope/vim-repeat'
 "Plugin 'jiangmiao/auto-pairs'
 Plugin 'Raimondi/delimitMate'
+
 "" Languages support
 Plugin 'https://github.com/raichoo/haskell-vim'
 Plugin 'https://github.com/altercation/vim-colors-solarized.git'
@@ -60,9 +58,7 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'michal-h21/vim-zettel'
 Plugin 'fatih/vim-go'
 
-
 call vundle#end()
-
 filetype plugin indent on     " обязательно!
 
 "" Brief help
@@ -76,17 +72,16 @@ filetype plugin indent on     " обязательно!
 "" see :h vundle for more details or wiki for FAQ"
 " }}}
 " NERDTree {{{2
-"" =========================================
-"" NERDTree 
-"" =========================================
 "How can I open a NERDTree automatically when vim starts up?
 "autocmd vimenter * NERDTree 
 "How can I open a NERDTree automatically when vim starts up if no files were
 "specified?
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 "Q. How can I close vim if the only window left open is a NERDTree?
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
 "How can I map a specific key or shortcut to open NERDTree?
 map <F12> :NERDTreeToggle<CR>
 
@@ -95,42 +90,24 @@ let NERDTreeSortHiddenFirst=1
 
 " }}}
 " vim-airline {{{2
-"" =========================================
-"" vim-airline 
-"" =========================================
-
 let g:airline_theme='solarized'
 let g:airline#extensions#capslock#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 " }}}
 " ctrlp {{{2
-"" =========================================
-"" ctrlp 
-"" =========================================
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-"" =========================================
-"" =========================================
 " }}}
 "tagbar {{{2
-"" =========================================
-"" tagbar 
-"" =========================================
 nmap <F8> :TagbarToggle<CR>
-"" =========================================
-"" =========================================
 " }}}
 " Syntastic {{{2
-"" =========================================
-"" Syntastic 
 "" https://github.com/scrooloose/syntastic
-"" =========================================
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
@@ -139,13 +116,8 @@ let b:syntastic_mode = "passive"
 let g:syntastic_shell = "/bin/sh"
 map <F9> :SyntasticToggleMode<CR>
 map <F10> :SyntasticCheck<CR>
-"" =========================================
-"" =========================================
 " }}}
 " vimtex {{{2
-"" =========================================
-"" vimtex 
-"" =========================================
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
@@ -153,9 +125,6 @@ set conceallevel=1
 let g:tex_conceal='abdmg'
 " }}}
 " UltiSnips {{{2
-"" =========================================
-"" UltiSnips
-"" =========================================
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
@@ -178,11 +147,14 @@ set background=light "actually it's will be light.
 set title
 set relativenumber
 set cursorline
+
 " Display the cursor position on the last line of the screen or in the status
 " line of a window
 set ruler
+
 " Always display the status line, even if only one window is displayed
 set laststatus=2
+
 " While working with file with long lines,
 " try to show as much as possible of the last line in the window
 " (rather than a column of "@", which is the default behavior).
@@ -252,18 +224,12 @@ autocmd BufNewFile,BufRead *.tex :Voom latex
 autocmd BufUnload *.md,*.mkd,*.tex :VoomToggle<bar>:q
 " }}}
 " Haskell Vim {{{2
-"
-"" =========================================
-"" Haskell Vim 
-"" =========================================
 let g:haskell_enable_quantification = 1
 let g:haskell_enable_recursivedo = 1
 let g:haskell_enable_arrowsyntax = 1
 let g:haskell_enable_pattern_synonyms = 1
 let g:haskell_enable_typeroles = 1
 let g:haskell_enable_static_pointers = 1
-"" =========================================
-"" =========================================
 
 " Специальные настройки отступов для Haskell
 au FileType haskell call s:Haskell()
@@ -305,11 +271,11 @@ imap <C-V> <C-O>:set paste<CR><C-R><C-R>+<C-O>:set nopaste<CR>
 vmap <C-V> "_di<C-V><ESC>
 "vmap <C-C> "+ygv
 vmap <C-X> "+d
+
 " Bind for selecting whole file
 " map  <C-a> <esc>ggVG<CR>
 
 set pastetoggle=<F2>
-
 map <F4> :below terminal<CR>
 " }}}
 " GUI {{{1
