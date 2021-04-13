@@ -57,6 +57,7 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'michal-h21/vim-zettel'
 Plugin 'fatih/vim-go'
+Plugin 'AndrewRadev/splitjoin.vim'
 
 call vundle#end()
 filetype plugin indent on     " обязательно!
@@ -205,6 +206,8 @@ set paste
 " Better command-line completion
 set wildmenu
 set linebreak
+set autowrite
+
 " }}}
 " Search {{{1
 " Show partial commands in the last line of the screen
@@ -244,7 +247,25 @@ au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
 set nolist
+let g:go_fmt_command = "goimports"
+let g:go_addtags_transform = "camelcase"
+let g:go_highlight_types = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave = 1
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 1
+au BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=8 shiftwidth=8
 " }}}
 " }}}
 " Shortcuts {{{1
