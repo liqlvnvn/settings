@@ -92,20 +92,16 @@ map <F12> :NERDTreeToggle<CR>
 
 let NERDTreeShowHidden=1
 let NERDTreeSortHiddenFirst=1
-"" =========================================
-"" =========================================
+
 " }}}
 " vim-airline {{{2
 "" =========================================
 "" vim-airline 
 "" =========================================
+
 let g:airline_theme='solarized'
 let g:airline#extensions#capslock#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
-set list          " Display unprintable characters f12 - switches
-set listchars=tab:▸\ ,eol:¬,trail:•,extends:»,precedes:« " Unprintable chars mapping
-"" =========================================
-"" =========================================
 " }}}
 " ctrlp {{{2
 "" =========================================
@@ -171,13 +167,13 @@ set background=light "actually it's will be light.
                     "but it should be reverse to terminal theme
 "set t_Co=256
 "let g:solarized_termcolors=256
-"let g:solarized_termtrans = 0 | 1 
-"g:solarized_degrade = 0 | 1 
-"g:solarized_bold = 1 | 0 
-"g:solarized_underline = 1 | 0 
-"g:solarized_italic = 1 | 0 
-"g:solarized_contrast = "normal"| "high" or "low" 
-"g:solarized_visibility= "normal"| "high" or "low" 
+"let g:solarized_termtrans = 0 | 1
+"g:solarized_degrade = 0 | 1
+"g:solarized_bold = 1 | 0
+"g:solarized_underline = 1 | 0
+"g:solarized_italic = 1 | 0
+"g:solarized_contrast = "normal"| "high" or "low"
+"g:solarized_visibility= "normal"| "high" or "low"
 
 set title
 set relativenumber
@@ -191,6 +187,12 @@ set laststatus=2
 " try to show as much as possible of the last line in the window
 " (rather than a column of "@", which is the default behavior).
 set display+=lastline
+set list          " Display unprintable characters f12 - switches
+set listchars=tab:▸\ ,eol:¬,trail:•,extends:»,precedes:« " Unprintable chars mapping
+
+" Split window below always
+set splitbelow
+set termwinsize=10x0
 
 " Highlight background after 80 symbol {{{2
 execute "set colorcolumn=" . join(range(81,335), ',')
@@ -276,9 +278,13 @@ au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
+set nolist
 " }}}
 " }}}
 " Shortcuts {{{1
+map <F11> :term<CR>
+noremap <C-s> :update<CR>
+
 " Tab navigation like Firefox.
 nnoremap <C-S-Tab> :tabprevious<CR>
 nnoremap <C-Tab>   :tabnext<CR>
@@ -286,21 +292,25 @@ nnoremap <C-t>     :tabnew<CR>
 inoremap <C-S-Tab> <Esc>:tabprevious<CR>i
 inoremap <C-Tab>   <Esc>:tabnext<CR>i
 inoremap <C-t>     <Esc>:tabnew<CR>
-" Press Space to turn off highlighting and clear any message already
-" displayed.
-nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
-" Binding for copying and paste from + register
-set clipboard=unnamedplus
-map <C-p> <ESC>"+P
-vmap <C-c> "*y<ESC><ESC> :let @+=@*<CR>
-" Bind for selecting whole file
-" map  <C-a> <esc>ggVG<CR>
-noremap <Leader>s :update<CR>
+
 " Press Space to turn off highlighting and clear any message already
 " displayed.
 nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+" Binding for copying and paste from + register
+set clipboard=unnamedplus
+"map <C-S-v> <ESC>"+P
+vmap <C-c> "*y<ESC><ESC> :let @+=@*<CR>
+imap <C-V> <C-O>:set paste<CR><C-R><C-R>+<C-O>:set nopaste<CR>
+vmap <C-V> "_di<C-V><ESC>
+"vmap <C-C> "+ygv
+vmap <C-X> "+d
+" Bind for selecting whole file
+" map  <C-a> <esc>ggVG<CR>
+
 set pastetoggle=<F2>
+
+map <F4> :below terminal<CR>
 " }}}
 " GUI {{{1
 if has("gui_running")
