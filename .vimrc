@@ -264,6 +264,7 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave = 1
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
+let g:acp_completeoptPreview = 1
 au BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=8 shiftwidth=8
 " }}}
