@@ -11,6 +11,9 @@ setxkbmap -layout "us,ru" -option "grp:alt_shift_toggle"
 #picom &
 
 # Programs
+# Screenshot app
+flameshot &
+
 # Wallpapers
 nitrogen --restore &
 sxhkd &
