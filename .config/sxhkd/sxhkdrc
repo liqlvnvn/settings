@@ -10,5 +10,5 @@ super + F7
 super + F8
     pamixer --allow-boost -i 1
     amixer sset Master 10%+
-F12
+super + F12
 	flameshot gui
