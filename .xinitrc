@@ -16,6 +16,7 @@ flameshot &
 
 # Wallpapers
 nitrogen --restore &
+
 sxhkd &
 redshift &
 dunst &
@@ -23,5 +24,6 @@ brave &
 dropbox-cli start &
 telegram-desktop &
 keepassx2 &
+code &
 dwmblocks &
 exec dwm
