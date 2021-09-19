@@ -18,13 +18,13 @@ export GOPATH=$HOME/projects/go
 
 #PS1='[\u@\h \W]\$ '  # Закомментируйте значение по умолчанию
 #DO NOT USE RAW ESCAPES, USE TPUT
-reset=$(tput sgr0)
-red=$(tput setaf 1)
-blue=$(tput setaf 4)
-green=$(tput setaf 2)
+#reset=$(tput sgr0)
+#red=$(tput setaf 1)
+#blue=$(tput setaf 4)
+#green=$(tput setaf 2)
 
 #PS1='\n \[$red\]\u\[$reset\] \[$blue\]\w\[$reset\] \[$red\]\$ \[$reset\]\[$green\] \n '
-PS1='\n \[$blue\]\w\[$reset\] \[$red\]\$ \[$reset\]\[$green\] \n '
+PS1='\[$blue\]\w\[$reset\] \[$red\]\$ \[$reset\]\[$green\]'
 
 
 # Use bash-completion, if available
@@ -71,6 +71,7 @@ alias la="ls -la"
 alias sl="ls"
 alias l="ls"
 alias s="ls"
+alias gl="golangci-lint run --enable-all"
 
 # This is GOLD for finding out what is taking so much space on your drives!
 alias diskspace="du -S | sort -n -r |more"
