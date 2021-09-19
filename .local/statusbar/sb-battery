@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 
 # Prints all batteries, their percentage remaining and an emoji corresponding
 # to charge status (🔌 for plugged up, 🔋 for discharging on battery, etc.).
@@ -16,8 +16,8 @@ case $BLOCK_BUTTON in
 	6) "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
-if [[ -f /sys/class/power_supply/BAT?* ]]
-then
+#if [[ -f /sys/class/power_supply/BAT?* ]]
+#then
     # Loop through all attached batteries and format the info
     for battery in /sys/class/power_supply/BAT?*; do
         # If non-first battery, print a space separator.
@@ -36,4 +36,4 @@ then
         # Prints the info
         printf "%s%s%d%%" "$status" "$warn" "$capacity"; unset warn
     done && exit 0
-fi
+#fi
