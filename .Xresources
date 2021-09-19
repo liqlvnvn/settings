@@ -79,7 +79,7 @@
 
 !! Setting for dpi and graphics
 !! Taken from https://wiki.archlinux.org/index.php/HiDPI
-Xft.dpi: 125
+Xft.dpi: 110
 
 ! These might also be useful depending on your monitor and personal preference:
 Xft.autohint: 0
