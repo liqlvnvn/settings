@@ -15,6 +15,9 @@ export PATH=$PATH:$HOME/.local/statusbar
 export PATH=$PATH:/usr/local/go/bin:~/.local/bin:~/projects/go/bin
 export GOPATH=$HOME/projects/go
 
+# For Java app working with dwm desktop
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 
 #PS1='[\u@\h \W]\$ '  # Закомментируйте значение по умолчанию
 #DO NOT USE RAW ESCAPES, USE TPUT
@@ -72,6 +75,7 @@ alias sl="ls"
 alias l="ls"
 alias s="ls"
 alias gl="golangci-lint run --enable-all"
+alias vim=nvim
 
 # This is GOLD for finding out what is taking so much space on your drives!
 alias diskspace="du -S | sort -n -r |more"
@@ -93,9 +97,6 @@ export LESS_TERMCAP_so=$'\e[01;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
-#if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-      #exec startx
-#fi
 
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
@@ -124,3 +125,24 @@ extract () {
        echo "'$1' is not a valid file!"
    fi
  }
+
+source /home/alex/.config/broot/launcher/bash/br
+
+# study stream aliases
+# Requires https://github.com/caarlos0/timer to be installed. spd-say should ship with your distro
+
+declare -A pomo_options
+pomo_options["work"]="25"
+pomo_options["break"]="5"
+
+pomodoro () {
+  if [ -n "$1" -a -n "${pomo_options["$1"]}" ]; then
+  val=$1
+  echo $val | lolcat
+  timer ${pomo_options["$val"]}m
+  espeak "'$val' session done"
+  fi
+}
+
+alias wo="pomodoro 'work'"
+alias br="pomodoro 'break'"

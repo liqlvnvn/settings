@@ -21,9 +21,11 @@ sxhkd &
 redshift &
 dunst &
 brave &
-dropbox-cli start &
-telegram-desktop &
-keepassx2 &
-code &
+#telegram-desktop &
+#keepassx2 &
+#code &
 dwmblocks &
-exec dwm
+thinkfan -q &
+syncthing &
+
+exec ~/.startdwm

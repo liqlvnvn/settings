@@ -10,10 +10,12 @@ set mouse=a
 set foldmethod=marker
 " Для установки плагинов
 set shell=/bin/bash
-set cm=blowfish
+if !has('nvim')
+	set cm=blowfish
+endif
 " }}}
 " Plugins {{{1
-" Vundle {{{2
+" Vundlmaine {{{2
 " Set 'nocompatible' to ward off unexpected things that your distro might
 " have made, as well as sanely reset options when re-sourcing .vimrc"
 set nocompatible
@@ -24,6 +26,8 @@ call vundle#begin()
 "репозитории на github
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'nvim-treesitter/nvim-treesitter'
+Plugin 'nvim-orgmode/orgmode'
 
 "" Panels
 Plugin 'scrooloose/nerdtree'
@@ -57,7 +61,9 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'michal-h21/vim-zettel'
 Plugin 'fatih/vim-go'
+Plugin 'neoclide/coc.nvim'
 Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'vim-scripts/AutoComplPop'
 
 call vundle#end()
 filetype plugin indent on     " обязательно!
@@ -130,6 +136,71 @@ let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 " }}}
+" coc.vim default settings {{{2
+" if hidden is not set, TextEdit might fail.
+set hidden
+" Better display for messages
+set cmdheight=2
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use U to show documentation in preview window
+nnoremap <silent> U :call <SID>show_documentation()<CR>
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+" }}}
+
 " }}}
 " Appearance {{{1
 colo solarized
@@ -146,6 +217,7 @@ set background=light "actually it's will be light.
 "g:solarized_visibility= "normal"| "high" or "low"
 
 set title
+set number
 set relativenumber
 set cursorline
 
@@ -243,6 +315,11 @@ function! s:Haskell()
 endfunction
 " }}}
 " Golang {{{2
+
+" disable vim-go :GoDef short cut (gd)
+" this is handled by LanguageClient [LC]
+let g:go_def_mapping_enabled = 0
+
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
@@ -259,12 +336,37 @@ let g:go_addtags_transform = "camelcase"
 " let g:go_highlight_operators = 1
 " let g:go_highlight_extra_types = 1
 " let g:go_highlight_build_constraints = 1
+
+"main disable all linters as that is taken care of by coc.nvim
+let g:go_diagnostics_enabled = 0
+let g:go_metalinter_enabled = []
+
+" don't jump to errors after metalinter is invoked
+let g:go_jump_to_error = 0
+
+" run go imports on file save
+let g:go_fmt_autosave = 1
+let g:go_fmt_command = "goimports"
+
+" automatically highlight variable your cursor is on
+let g:go_auto_sameids = 0
+
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave = 1
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
+
+set completeopt+=menuone,noselect,noinsert
 let g:acp_completeoptPreview = 1
+function! OpenCompletion()
+    if !pumvisible() && ((v:char >= 'a' && v:char <= 'z') || (v:char >= 'A' && v:char <= 'Z'))
+        call feedkeys("\<C-x>\<C-o>", "n")
+    endif
+endfunction
+
+autocmd InsertCharPre * call OpenCompletion()
+
 au BufRead,BufNewFile *.gohtml set filetype=gohtmltmpl
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=8 shiftwidth=8
 " }}}
@@ -274,12 +376,12 @@ map <F11> :term<CR>
 noremap <C-s> :update<CR>
 
 " Tab navigation like Firefox.
-nnoremap <C-S-Tab> :tabprevious<CR>
-nnoremap <C-Tab>   :tabnext<CR>
-nnoremap <C-t>     :tabnew<CR>
-inoremap <C-S-Tab> <Esc>:tabprevious<CR>i
-inoremap <C-Tab>   <Esc>:tabnext<CR>i
-inoremap <C-t>     <Esc>:tabnew<CR>
+"nnoremap <C-S-Tab> :tabprevious<CR>
+"nnoremap <C-Tab>   :tabnext<CR>
+"nnoremap <C-t>     :tabnew<CR>
+"inoremap <C-S-Tab> <Esc>:tabprevious<CR>i
+"inoremap <C-Tab>   <Esc>:tabnext<CR>i
+"inoremap <C-t>     <Esc>:tabnew<CR>
 
 " Press Space to turn off highlighting and clear any message already
 " displayed.
@@ -289,6 +391,7 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 set clipboard=unnamedplus
 "map <C-S-v> <ESC>"+P
 vmap <C-c> "*y<ESC><ESC> :let @+=@*<CR>
+vmap <C-C> "*y<ESC><ESC> :let @+=@*<CR>
 imap <C-V> <C-O>:set paste<CR><C-R><C-R>+<C-O>:set nopaste<CR>
 vmap <C-V> "_di<C-V><ESC>
 "vmap <C-C> "+ygv
